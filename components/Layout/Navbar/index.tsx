@@ -2,8 +2,9 @@
 
 import { dancingScript } from "@/lib/utils/fonts";
 import Link from "next/link";
-import { Group, Search, ShoppingCart } from "lucide-react";
+import { Group, Search, ShoppingCart, User } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { navLinks } from "@/lib/store/navbar";
 
 const Navbar = () => {
   const [activeSolo, setActiveSolo] = useState(false);
@@ -55,19 +56,21 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-10">
-            <ul className="flex items-center space-x-4">
-              <li>Home</li>
-              <li>Menu</li>
-              <li>About</li>
-              <li>Trending</li>
+            <ul className="flex items-center space-x-5">
+              {navLinks.map((link, id) => (
+                <li key={id}>
+                  <Link href={link.path}>{link.label}</Link>
+                </li>
+              ))}
             </ul>
 
             <div className="flex items-center gap-4">
               <Group size={20} />
               <ShoppingCart size={20} />
               <Search size={20} />
-              <button className="px-6 py-2 rounded-full border-deepRed border duration-300 hover:bg-deepRed hover:text-white">
-                Order Now
+              <button className="px-5 py-[6px] rounded-full duration-300 bg-deepRed text-white flex items-center gap-1">
+                <span>Account</span>
+                <User size={18} />
               </button>
             </div>
           </div>
