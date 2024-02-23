@@ -25,7 +25,7 @@ const VendorsHero = () => {
             <div>
               <input
                 type="text"
-                className="outline-none p-3 w-full text-center border text-zinc-300 border-white/50 rounded-lg bg-black/40"
+                className="outline-none p-3 w-full text-center border duration-300 focus:border-white text-zinc-300 border-white/40 rounded-lg bg-black/40"
                 placeholder="Search for a vendor"
               />
             </div>
