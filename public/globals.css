@@ -27,7 +27,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background));
   transition: color 0.3s, background-color 0.3s;
-  user-select: none;
+  /* user-select: none; */
 }
 
 @layer utilities {
@@ -38,4 +38,26 @@ body {
 
 .hide-scroll::-webkit-scrollbar {
   display: none;
+}
+
+.fade-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(to right, #fff 10%, #ffffff00);
+  z-index: 10;
+}
+
+.fade-effect::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(to left, #fff 10%, #ffffff00);
+  z-index: 10;
 }
