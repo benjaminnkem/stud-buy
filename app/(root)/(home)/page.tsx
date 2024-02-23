@@ -1,7 +1,8 @@
 import HomeHero from "@/components/UI/Home/hero";
+import Vendors from "@/components/UI/Home/vendors";
 import { foods } from "@/lib/data/home";
 import { dancingScript } from "@/lib/utils/fonts";
-import { ChevronRight, ShoppingBag, ShoppingCart } from "lucide-react";
+import { ChevronRight, Star, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 
 const Page = () => {
@@ -33,9 +34,7 @@ const Page = () => {
 
                   <div className="flex items-center justify-between">
                     <p className="text-xl">N8,999</p>
-                    {/* <button className="px-5 py-2 rounded-xl bg-deepRed text-white" title="Add to cart">
-                      Add To Cart
-                    </button> */}
+
                     <div
                       className="w-10 h-10 grid place-content-center bg-deepRed rounded-full text-white cursor-pointer"
                       title="Add to cart"
@@ -54,6 +53,8 @@ const Page = () => {
             </button>
           </div>
         </section>
+
+        <Vendors />
 
         <section className="container mt-[12rem]">
           <div className="grid grid-cols-2 gap-10">

@@ -25,10 +25,10 @@ const Navbar = () => {
 
       if (current > prev) {
         ref.current.style.top = "-100%";
-        ref.current.style.opacity = 0;
+        ref.current.style.opacity = "0%";
       } else {
         ref.current.style.top = "0%";
-        ref.current.style.opacity = 1;
+        ref.current.style.opacity = "100%";
       }
 
       prev = current;
@@ -66,7 +66,9 @@ const Navbar = () => {
               <Group size={20} />
               <ShoppingCart size={20} />
               <Search size={20} />
-              <button className="px-6 py-2 rounded-full border-deepRed border">Order Now</button>
+              <button className="px-6 py-2 rounded-full border-deepRed border duration-300 hover:bg-deepRed hover:text-white">
+                Order Now
+              </button>
             </div>
           </div>
         </div>
