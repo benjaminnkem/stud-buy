@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "../public/globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { forum, mulish } from "@/lib/utils/fonts";
 
 export const metadata: Metadata = {
   title: "CBuddy - Let's Activate your tastebuds",
@@ -16,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={mulish.className}>{children}</body>
     </html>
   );
 }
