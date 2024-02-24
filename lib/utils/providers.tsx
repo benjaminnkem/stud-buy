@@ -1,4 +1,7 @@
+"use client";
+
 import { ToastOptions, Toaster } from "react-hot-toast";
+import { SessionProvider } from "next-auth/react";
 
 const Providers = ({ children }: React.PropsWithChildren) => {
   const toastOptions: ToastOptions = {
@@ -13,8 +16,10 @@ const Providers = ({ children }: React.PropsWithChildren) => {
 
   return (
     <>
-      <Toaster {...toastOptions} />
-      {children}
+      <SessionProvider>
+        <Toaster {...toastOptions} />
+        {children}
+      </SessionProvider>
     </>
   );
 };
