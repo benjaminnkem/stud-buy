@@ -51,7 +51,7 @@ const Navbar = () => {
         <div className="container flex items-center justify-between py-4">
           <div>
             <Link href={"/"} className={`${dancingScript.className} text-lg`}>
-              StudBuds
+              SweetBuds
             </Link>
           </div>
 

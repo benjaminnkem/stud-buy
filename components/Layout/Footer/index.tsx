@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div>
           <Link href={"/"} className={`${dancingScript.className} text-lg`}>
-            StudBuds
+            SweetBuds
           </Link>
         </div>
         <div>

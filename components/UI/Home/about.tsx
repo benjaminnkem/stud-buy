@@ -8,7 +8,7 @@ const About = () => {
           <h3 className={`text-deepRed font-extrabold uppercase text-3xl ${dancingScript.className}`}>About Us</h3>
           <div className="space-y-4 text-zinc-500">
             <p>
-              StudBuds is here to revolutionize student food purchasing Lorem ipsum dolor sit amet consectetur,
+              SweetBuds is here to revolutionize student food purchasing Lorem ipsum dolor sit amet consectetur,
               adipisicing elit. Ea laboriosam molestiae magnam ut, incidunt ipsa doloribus dolorum molestias.
             </p>
             <p>

@@ -1,15 +1,39 @@
+"use client";
+
 import { dancingScript } from "@/lib/utils/fonts";
-import { Search, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 
 const HomeHero = () => {
+  const ref = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
+      timeline.from("#hero-img", { scale: 1.3 });
+    },
+    { scope: ref }
+  );
+
   return (
-    <header className="min-h-[38rem] relative overflow-hidden">
+    <header className="min-h-[38rem] relative overflow-hidden" ref={ref}>
       <Image
         src={"/images/home/hero.jpg"}
         alt="hero"
         width={1240}
         height={800}
+        id="hero-img"
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
 
