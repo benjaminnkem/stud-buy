@@ -1,27 +1,39 @@
 import { Variants } from "framer-motion";
 
-const parentVariant: Variants = {
+export const parentVariant: Variants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { staggerChildren: 0.2 } },
   exit: { opacity: 0 },
 };
 
-const opacityVariant: Variants = {
+export const opacityVariant: Variants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 0.5 } },
   exit: { opacity: 0 },
 };
 
-const fadeToTopVariant: Variants = {
+export const stiffTransition = { type: "spring", stiffness: 300, damping: 30 };
+
+export const fadeToTopVariant: Variants = {
   initial: { opacity: 0, y: "20%" },
-  animate: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
+  animate: { opacity: 1, y: 0, transition: { ...stiffTransition } },
   exit: { opacity: 0, y: "20%" },
 };
 
-const fadeToBottomVariant: Variants = {
+export const fadeToBottomVariant: Variants = {
   initial: { opacity: 0, y: "-20%" },
-  animate: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
+  animate: { opacity: 1, y: 0, transition: { ...stiffTransition } },
   exit: { opacity: 0, y: "-20%" },
 };
 
-export { opacityVariant, fadeToBottomVariant, fadeToTopVariant, parentVariant };
+export const fadeToRightVariant: Variants = {
+  initial: { opacity: 0, x: "-5%" },
+  animate: { opacity: 1, x: 0, transition: { ...stiffTransition } },
+  exit: { opacity: 0, x: "-5%" },
+};
+
+export const fadeToLeftVariant: Variants = {
+  initial: { opacity: 0, x: "5%" },
+  animate: { opacity: 1, x: 0, transition: { ...stiffTransition } },
+  exit: { opacity: 0, x: "5%" },
+};
