@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { fadeToTopVariant, parentVariant } from "@/lib/utils/variants";
+import { fadeToTopVariant, parentVariant, stiffTransition } from "@/lib/utils/variants";
 import { useState } from "react";
 import { StudentRegisterForm, VendorRegisterForm } from "@/components/UI/Account/Register";
+import Link from "next/link";
+import { Home } from "lucide-react";
 
 const Page = () => {
   const [current, setCurrent] = useState<"regular" | "vendor">("regular");
@@ -14,7 +16,11 @@ const Page = () => {
   return (
     <>
       <main className="min-h-screen flex items-center justify-center py-10 bg-deepRed/20">
-        <div className="min-h-[36rem] rounded-2xl shadow-2xl md:max-w-[50rem] w-[98%] mx-auto bg-white grid overflow-hidden grid-cols-2">
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1, transition: stiffTransition }}
+          className="min-h-[36rem] rounded-2xl shadow-2xl md:max-w-[50rem] w-[98%] mx-auto bg-white grid overflow-hidden grid-cols-2"
+        >
           <div className="h-full relative overflow-hidden w-full">
             <Image
               src={"/images/account/food2.jpg"}
@@ -37,6 +43,12 @@ const Page = () => {
             />
 
             <div className="w-full h-full absolute top-0 left-0 p-6 bg-gradient-to-t text-white from-black flex items-center justify-center">
+              <div className="absolute top-4 left-4">
+                <Link href={"/"}>
+                  <Home />
+                </Link>
+              </div>
+
               <AnimatePresence mode="wait">
                 {current === "regular" ? (
                   <motion.div
@@ -94,7 +106,7 @@ const Page = () => {
               )}
             </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
       </main>
     </>
   );

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeToRightVariant, parentVariant } from "@/lib/utils/variants";
+import Link from "next/link";
 
 export const StudentRegisterForm = () => {
   return (
@@ -55,7 +56,10 @@ export const StudentRegisterForm = () => {
           <div className="pt-3">
             <button className="w-full py-2 rounded-xl bg-deepRed font-medium text-white">Continue</button>
             <p className="text-sm text-center text-zinc-600 mt-1">
-              Have an account? <span className="text-deepRed font-medium border-b border-deepRed">Login</span>
+              Have an account?{" "}
+              <Link href={"/account/login"} className="text-deepRed font-medium border-b border-deepRed">
+                Login
+              </Link>
             </p>
           </div>
         </form>
@@ -129,7 +133,10 @@ export const VendorRegisterForm = () => {
           <div className="pt-3">
             <button className="w-full py-2 rounded-xl bg-deepRed font-medium text-white">Continue</button>
             <p className="text-sm text-center text-zinc-600 mt-1">
-              Have an account? <span className="text-deepRed font-medium border-b border-deepRed">Login</span>
+              Have an account?{" "}
+              <Link href={"/account/login"} className="text-deepRed font-medium border-b border-deepRed">
+                Login
+              </Link>
             </p>
           </div>
         </form>

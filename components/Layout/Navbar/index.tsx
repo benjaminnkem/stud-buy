@@ -68,10 +68,14 @@ const Navbar = () => {
               <Group size={20} />
               <ShoppingCart size={20} />
               <Search size={20} />
-              <button className="px-5 py-[6px] rounded-full duration-300 bg-deepRed text-white flex items-center gap-1">
-                <span>Account</span>
-                <User size={18} />
-              </button>
+              <div>
+                <Link href={"/account/login"}>
+                  <button className="px-5 py-[6px] rounded-full duration-300 bg-deepRed text-white flex items-center gap-1">
+                    <span>Account</span>
+                    <User size={18} />
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
