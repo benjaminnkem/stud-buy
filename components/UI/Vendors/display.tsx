@@ -3,6 +3,7 @@ import { locations } from "@/lib/data";
 import { Location } from "@/lib/types";
 import { Check, ExternalLink, Star, Map } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const Filter = () => {
@@ -70,9 +71,13 @@ const VendorDisplay = () => {
                 </div>
                 <div>
                   <p className="text-sm font-light opacity-80">(FUNAAB)</p>
-                  <div className="flex items-center gap-2 font-bold text-sm text-deepRed">
-                    <p>View Page</p>
-                    <ExternalLink size={18} />
+                  <div>
+                    <Link href={`/vendors/${id + 1}`} target="_blank">
+                      <div className="flex items-center gap-2 font-bold text-sm text-deepRed">
+                        <p>View Page</p>
+                        <ExternalLink size={18} />
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>
