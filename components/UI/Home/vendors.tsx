@@ -10,7 +10,9 @@ const Vendors = () => {
 
   return (
     <section className="container mt-[8rem] space-y-6">
-      <h3 className={`text-deepRed ${dancingScript.className} font-extrabold text-center uppercase text-3xl`}>
+      <h3
+        className={`text-deepRed ${dancingScript.className} font-extrabold text-center uppercase md:text-3xl text-2xl`}
+      >
         Popular Vendors
       </h3>
       <div className="fade-effect relative">

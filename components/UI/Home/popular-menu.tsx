@@ -6,10 +6,12 @@ import { ChevronRight, Star, ShoppingCart } from "lucide-react";
 const PopularMenu = () => {
   return (
     <section className="container">
-      <h3 className={`text-deepRed ${dancingScript.className} font-extrabold text-center uppercase text-3xl`}>
+      <h3
+        className={`text-deepRed ${dancingScript.className} font-extrabold text-center uppercase md:text-3xl text-2xl`}
+      >
         Popular on the Menu
       </h3>
-      <div className="mt-8 grid grid-cols-3 gap-24 px-10">
+      <div className="mt-8 grid md:grid-cols-3 sm:grid-cols-2 lg:gap-24 md:gap-12 sm:gap-12 gap-10 md:px-10">
         {[...foods, ...foods].map((food, id) => (
           <div key={id} className="rounded-lg hover:shadow-2xl shadow relative overflow-hidden duration-300">
             <div className="max-h-[15rem] overflow-hidden">

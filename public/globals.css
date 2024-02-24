@@ -27,6 +27,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background));
   transition: color 0.3s, background-color 0.3s;
+  overflow-x: hidden;
   /* user-select: none; */
 }
 
@@ -60,4 +61,11 @@ body {
   height: 100%;
   background: linear-gradient(to left, #fff 10%, #ffffff00);
   z-index: 10;
+}
+
+@media screen and (max-width: 768px) {
+  .fade-effect::before,
+  .fade-effect::after {
+    opacity: 0;
+  }
 }

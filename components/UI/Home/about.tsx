@@ -2,8 +2,8 @@ import { dancingScript } from "@/lib/utils/fonts";
 
 const About = () => {
   return (
-    <section className="container mt-[12rem]">
-      <div className="grid grid-cols-2 gap-10">
+    <section className="container md:mt-[12rem] mt-[5rem]">
+      <div className="grid md:grid-cols-2 gap-10">
         <div className="space-y-6">
           <h3 className={`text-deepRed font-extrabold uppercase text-3xl ${dancingScript.className}`}>About Us</h3>
           <div className="space-y-4 text-zinc-500">

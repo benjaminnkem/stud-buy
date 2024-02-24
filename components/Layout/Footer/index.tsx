@@ -4,9 +4,9 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="bg-deepRed text-gray-100 py-8">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex md:flow-row flex-col md:justify-between justify-center text-center items-center flex-wrap gap-4 md:gap-0">
         <div>
-          <Link href={"/"} className={`${dancingScript.className} text-lg`}>
+          <Link href={"/"} className={`${dancingScript.className} text-lg font-bold`}>
             SweetBuds
           </Link>
         </div>

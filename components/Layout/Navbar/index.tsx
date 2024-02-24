@@ -2,7 +2,7 @@
 
 import { dancingScript } from "@/lib/utils/fonts";
 import Link from "next/link";
-import { Group, Search, ShoppingCart, User } from "lucide-react";
+import { Group, Menu, Search, ShoppingCart, User } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { navLinks } from "@/lib/store/navbar";
 
@@ -55,7 +55,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex items-center gap-10">
+          <div className="md:flex hidden items-center gap-10">
             <ul className="flex items-center space-x-5">
               {navLinks.map((link, id) => (
                 <li key={id}>
@@ -78,6 +78,8 @@ const Navbar = () => {
               </div>
             </div>
           </div>
+
+          <Menu className="md:hidden" />
         </div>
       </nav>
     </>
