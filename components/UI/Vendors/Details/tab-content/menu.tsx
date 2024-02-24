@@ -8,7 +8,12 @@ const Menu = () => {
 
   return (
     <motion.div {...opacityVariant} key={"menu"} className="flex gap-6">
-      <motion.div animate="animate" variants={parentVariant} className="flex items-center gap-6 flex-wrap">
+      <motion.div
+        animate="animate"
+        initial="initial"
+        variants={parentVariant}
+        className="flex items-center gap-6 flex-wrap"
+      >
         {Array.from({ length: 16 }).map((_, id) => (
           <MenuCard key={id} updateGlobalCount={setGlobalCount} />
         ))}
