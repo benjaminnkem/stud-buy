@@ -43,7 +43,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 duration-500 left-0 w-full z-[4000] ${
+        className={`fixed top-0 duration-500 left-0 w-full z-[500] ${
           activeSolo ? "bg-white shadow-md text-black" : "text-white"
         }`}
         ref={ref}

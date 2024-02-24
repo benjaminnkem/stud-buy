@@ -10,7 +10,7 @@ type NavData = {
 
 export const navLinks: NavLink[] = [
   { label: "Home", path: "/" },
-  { label: "Menu", path: "/" },
+  { label: "Menu", path: "/menu" },
   { label: "Vendors", path: "/vendors" },
   { label: "Trending 🔥", path: "/" },
   // { label: "About", path: "/" },
