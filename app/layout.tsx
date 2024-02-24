@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../public/globals.css";
 import { forum, mulish } from "@/lib/utils/fonts";
+import Providers from "@/lib/utils/providers";
 
 export const metadata: Metadata = {
   title: "CBuddy - Let's Activate your tastebuds",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={mulish.className}>{children}</body>
+      <body className={mulish.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

@@ -3,6 +3,7 @@ import { tabs } from "@/lib/data/vendor";
 import { VendorTag } from "@/lib/types";
 import { useState } from "react";
 import Menu from "./tab-content/menu";
+import { AnimatePresence } from "framer-motion";
 
 const VendorContent = () => {
   const [currentTab, setCurrentTab] = useState<VendorTag>("menu");
@@ -32,7 +33,11 @@ const VendorContent = () => {
         ))}
       </div>
 
-      <div>{renderContent()}</div>
+      <div>
+        <AnimatePresence mode="wait" initial={false}>
+          {renderContent()}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
