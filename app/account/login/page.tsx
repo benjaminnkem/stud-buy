@@ -26,11 +26,9 @@ const Page = () => {
             >
               <motion.div variants={opacityVariant} className="space-y-1 text-center">
                 <h2 className="text-3xl font-semibold">
-                  Vendor <span className="text-deepRed">account</span>
+                  Oya <span className="text-deepRed">Login</span>
                 </h2>
-                <p className="text-zinc-600 text-sm">
-                  Other details can be updated in your secure dashboard after signing up.
-                </p>
+                <p className="text-zinc-600 text-sm">Login to access your dashboard and view your activities.</p>
               </motion.div>
 
               <motion.div variants={opacityVariant} className="mt-8 space-y-2">

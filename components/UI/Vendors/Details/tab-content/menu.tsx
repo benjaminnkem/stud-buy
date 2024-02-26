@@ -1,4 +1,4 @@
-import MenuCard from "@/components/Common/Cards/menu";
+import MenuCard from "@/components/Common/Cards/large-menu";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { opacityVariant, parentVariant } from "@/lib/utils/variants";
