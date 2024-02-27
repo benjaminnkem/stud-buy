@@ -12,7 +12,7 @@ const Providers = ({ children }: React.PropsWithChildren) => {
   const toastOptions: ToastOptions = {
     duration: 2000,
     style: {},
-    position: "top-right",
+    position: "bottom-left",
     ariaProps: {
       "aria-live": "polite",
       role: "alert",

@@ -1,4 +1,4 @@
-import MenuDisplay from "@/components/UI/Menus/display";
+import MenuDisplay from "@/components/UI/Menus/Content";
 import MenuHero from "@/components/UI/Menus/hero";
 
 const Page = () => {

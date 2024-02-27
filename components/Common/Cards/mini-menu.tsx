@@ -6,8 +6,8 @@ const MiniMenu: React.FC<Food> = (data) => {
   const { description, image, name, price, seller } = data;
 
   return (
-    <div className="relative duration-300 flex hover:shadow-xl cursor-pointer">
-      <div className="lg:w-2/5 w-[30%] overflow-hidden rounded-xl max-h-[10rem] flex-shrink-0">
+    <div className="relative duration-300 bg-white rounded-lg flex hover:shadow-xl cursor-pointer">
+      <div className="lg:w-2/5 w-[30%] overflow-hidden rounded-xl md:max-h-[9rem] max-h-[8rem] flex-shrink-0">
         <Image src={image} alt={name} width={500} height={500} className="w-full h-full object-cover" />
       </div>
 

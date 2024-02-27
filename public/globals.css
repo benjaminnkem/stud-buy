@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: 255, 255, 255;
+  --background: 252, 252, 252;
   --foreground: 0, 0, 0;
 }
 
@@ -28,7 +28,6 @@ body {
   background: rgb(var(--background));
   transition: color 0.3s, background-color 0.3s;
   overflow-x: hidden;
-  /* user-select: none; */
 }
 
 @layer utilities {
@@ -68,4 +67,17 @@ body {
   .fade-effect::after {
     opacity: 0;
   }
+}
+
+.show_scroll::-webkit-scrollbar {
+  display: block;
+  width: 4px;
+}
+
+.show_scroll::-webkit-scrollbar-thumb {
+  background: #e63946;
+}
+
+input {
+  outline: none;
 }
