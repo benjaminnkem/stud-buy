@@ -6,29 +6,36 @@ import { foods } from "@/lib/data/home";
 import MiniMenu from "@/components/Common/Cards/mini-menu";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { menuCats } from "@/lib/data/vendor";
+import { useQuery, useMutation } from "@tanstack/react-query";
 
-const cats = ["rice", "beans", "chicken", "drinks", "pizza", "cake", "soup", "swallow"];
+const fetchCategories = async () => new Promise((resolve) => setTimeout(resolve, 500)).then(() => [...menuCats]);
 
 const MenuDisplay = () => {
   const [menuCategory, setMenuCategory] = useState("rice");
-  const [categories, setCategories] = useState(cats);
+  const [categories, setCategories] = useState(menuCats);
 
   const [filterInput, setFilterInput] = useState("");
+
+  const { isLoading, data, isError } = useQuery<string[]>({
+    queryKey: ["menu-categories"],
+    queryFn: () => fetchCategories(),
+  });
 
   const filterCategories = (value: string) => {
     setFilterInput(value);
 
     if (!value) {
-      setCategories(cats);
+      setCategories(menuCats);
       return;
     }
 
-    const filtered = cats.filter((el) => el.toLocaleLowerCase().trim().startsWith(value));
+    const filtered = menuCats.filter((el) => el.toLocaleLowerCase().trim().startsWith(value));
 
     if (!filtered || filtered.length === 0) {
       console.log("couldn't be found");
       toast.error("category not found", { id: "not-found" });
-      setCategories(cats);
+      setCategories(menuCats);
       return;
     }
 
@@ -43,6 +50,7 @@ const MenuDisplay = () => {
       >
         Popular on the Menu
       </h3>
+
       <div className="flex mt-8 gap-4">
         <div className="space-y-2 pr-2">
           <input
@@ -53,7 +61,7 @@ const MenuDisplay = () => {
             onChange={(e) => filterCategories(e.target.value)}
           />
 
-          <div className="overflow-y-auto space-y-1 show_scroll pr-1">
+          <div className="overflow-y-auto space-y-1 show_scroll pr-1 min-w-[15rem]">
             {categories.map((item, id) => (
               <div
                 key={id}
