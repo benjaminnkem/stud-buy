@@ -14,9 +14,9 @@ const queryClient = new QueryClient();
 
 const Providers = ({ children }: React.PropsWithChildren) => {
   const toastOptions: ToastOptions = {
-    duration: 2000,
+    duration: 6000,
     style: {},
-    position: "bottom-left",
+    position: "top-center",
     ariaProps: {
       "aria-live": "polite",
       role: "alert",

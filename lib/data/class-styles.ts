@@ -6,7 +6,7 @@ export const cardClass = classNames([
 ]);
 
 export const counterButton = classNames([
-  "outline-none min-w-12 flex items-center border",
-  "justify-center py-3 hover:shadow-lg duration-300",
+  "outline-none w-10 flex items-center border flex-shrink-0",
+  "justify-center py-3 hover:shadow-lg duration-300 rounded-lg",
   "disabled:opacity-50 disabled:hover:bg-transparent",
 ]);

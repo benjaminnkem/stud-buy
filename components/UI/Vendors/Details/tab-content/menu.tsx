@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { opacityVariant, parentVariant } from "@/lib/utils/variants";
-import { foods } from "@/lib/data/home";
 import MiniMenu from "@/components/Common/Cards/mini-menu";
+import { foods } from "@/lib/data/vendor";
+import Tray from "./tray";
 
 const Menu = () => {
   return (
@@ -10,14 +11,18 @@ const Menu = () => {
         animate="animate"
         initial="initial"
         variants={parentVariant}
-        className="grid lg:grid-cols-2 gap-4 mx-auto"
+        className="grid lg:grid-cols-2 gap-x-4 gap-y-4"
       >
         {/* {Array.from({ length: 16 }).map((_, id) => (
           <MenuCard key={id} updateGlobalCount={setGlobalCount} />
         ))} */}
-        {[...foods, ...foods, ...foods].map((food, id) => (
+        {foods.map((food, id) => (
           <MiniMenu {...food} key={id} type="action" />
         ))}
+      </motion.div>
+
+      <motion.div className="min-w-[21rem]">
+        <Tray />
       </motion.div>
     </motion.div>
   );

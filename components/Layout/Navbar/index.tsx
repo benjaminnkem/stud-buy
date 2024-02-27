@@ -4,7 +4,7 @@ import { dancingScript } from "@/lib/utils/fonts";
 import Link from "next/link";
 import { Group, Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { navLinks } from "@/lib/store/navbar";
+import { navLinks } from "@/lib/store/navbar.store";
 
 const Navbar = () => {
   const [activeSolo, setActiveSolo] = useState(false);
