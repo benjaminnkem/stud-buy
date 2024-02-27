@@ -41,7 +41,7 @@ const BuyAction: React.FC<Props> = (data) => {
       // remove duplicate and add the updated one
       updateItems(remainingItems ? [...remainingItems, itemToAdd] : [itemToAdd]);
       toast.success(`${quantity} ${quantity === 1 ? "quantity" : "quantities"} of ${name} updated in tray.`, {
-        id: `${id}-added`,
+        id: `${id}-update`,
       });
 
       setQuantity(0);
@@ -50,7 +50,9 @@ const BuyAction: React.FC<Props> = (data) => {
 
     updateItems(items ? [...items, itemToAdd] : [itemToAdd]);
 
-    toast.success(`${quantity} ${quantity === 1 ? "quantity" : "quantities"} of ${name} added to tray.`);
+    toast.success(`${quantity} ${quantity === 1 ? "quantity" : "quantities"} of ${name} added to tray.`, {
+      id: `${id}-added`,
+    });
     setQuantity(0);
   };
 
@@ -58,14 +60,14 @@ const BuyAction: React.FC<Props> = (data) => {
     <>
       <motion.div
         variants={fadeToTopVariant}
-        className="relative duration-300 select-none bg-white rounded-lg border border-zinc-100 flex justify-between hover:shadow-xl cursor-pointer md:max-h-[9rem] overflow-hidden"
+        className="relative duration-300 select-none bg-white rounded-lg border border-zinc-100 flex justify-between hover:shadow-xl cursor-pointer overflow-hidden"
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center md:gap-2 gap-8">
           <div className="overflow-hidden max-w-[10rem] rounded-l-lg flex-shrink-0">
             <Image src={image} alt={name} width={500} height={500} className="w-full h-full object-cover" />
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-2 py-4 md:py-0">
             <div>
               <p className="font-bold text-md">{name}</p>
               <p className={`${isAvailable ? "text-green-500/80" : "text-red-500/80"} font-semibold text-xs`}>
@@ -74,44 +76,76 @@ const BuyAction: React.FC<Props> = (data) => {
             </div>
 
             <p className="text-lg font-medium pt-1">{formatPrice(price)}</p>
+            <CounterButtons
+              addToTray={addToTray}
+              isAvailable={isAvailable}
+              price={price}
+              quantity={quantity}
+              setQuantity={setQuantity}
+              screen="mobile"
+            />
           </div>
         </div>
 
-        <div className="flex items-center justify-center text-center">
-          <div>
-            <div className="flex items-center justify-center gap-2 px-4">
-              <button
-                className={`${counterButton} hover:bg-zinc-400`}
-                disabled={!isAvailable}
-                onClick={() => minus(setQuantity)}
-              >
-                <Minus size={16} />
-              </button>
-              <p>{quantity}</p>
-              <button
-                className={`${counterButton}  hover:bg-zinc-400`}
-                disabled={!isAvailable}
-                onClick={() => plus(setQuantity)}
-              >
-                <Plus size={16} />
-              </button>
-            </div>
-            <AnimatePresence mode="wait" initial={false}>
-              {quantity !== 0 && (
-                <motion.div {...opacityVariant} className="text-sm">
-                  <p>
-                    {quantity}x{price}={formatDefault(quantity * price)}
-                  </p>
-                  <button className="text-green-500 font-semibold" onClick={addToTray}>
-                    Confirm
-                  </button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
+        <CounterButtons
+          addToTray={addToTray}
+          isAvailable={isAvailable}
+          price={price}
+          quantity={quantity}
+          setQuantity={setQuantity}
+          screen="desktop"
+        />
       </motion.div>
     </>
+  );
+};
+
+const CounterButtons: React.FC<{
+  isAvailable: boolean;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+  quantity: number;
+  addToTray: () => void;
+  price: number;
+  screen: "desktop" | "mobile";
+}> = ({ isAvailable, addToTray, price, screen, quantity, setQuantity }) => {
+  return (
+    <div
+      className={`${
+        screen === "desktop" ? "xl:flex hidden justify-center" : "xl:hidden flex"
+      } items-center text-center`}
+    >
+      <div>
+        <div className={`flex items-center ${screen === "desktop" && "justify-center px-4"} gap-2`}>
+          <button
+            className={`${counterButton} hover:bg-zinc-400`}
+            disabled={!isAvailable}
+            onClick={() => minus(setQuantity)}
+          >
+            <Minus size={16} />
+          </button>
+          <p>{quantity}</p>
+          <button
+            className={`${counterButton}  hover:bg-zinc-400`}
+            disabled={!isAvailable}
+            onClick={() => plus(setQuantity)}
+          >
+            <Plus size={16} />
+          </button>
+        </div>
+        <AnimatePresence mode="wait" initial={false}>
+          {quantity !== 0 && (
+            <motion.div {...opacityVariant} className="text-sm">
+              <p>
+                {quantity}x{price}={formatDefault(quantity * price)}
+              </p>
+              <button className="text-green-500 font-semibold" onClick={addToTray}>
+                Confirm
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
   );
 };
 

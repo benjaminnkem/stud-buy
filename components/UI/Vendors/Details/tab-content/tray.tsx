@@ -2,11 +2,25 @@ import { formatDefault, formatPrice } from "@/lib/helpers/numbers";
 import { useTray } from "@/lib/store/vendor.store";
 import { fadeToTopVariant, opacityVariant } from "@/lib/utils/variants";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trash2 } from "lucide-react";
+import { Trash2, Truck } from "lucide-react";
 import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
 
 const Tray = () => {
   const { items, deleteItems } = useTray();
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  const calculateTotal = useCallback(() => {
+    if (!items) return;
+
+    const total = items.reduce((total, value) => total + value.price * value.quantity, 0);
+
+    setTotalAmount(total);
+  }, [items]);
+
+  useEffect(() => {
+    calculateTotal();
+  }, [items]);
 
   return (
     <div className="w-full border p-2 rounded-lg max-h-[35rem] overflow-y-auto show_scroll">
@@ -47,6 +61,14 @@ const Tray = () => {
                 </div>
               </motion.div>
             ))}
+
+            <div className="mt-4 space-y-1">
+              <p className="text-lg font-semibold">Total: {formatPrice(totalAmount)}</p>
+              <button className="w-full py-2 bg-deepRed rounded-lg text-white duration-200 justify-center hover:bg-deepRed/95 flex items-center gap-2 group">
+                <span>Checkout</span>
+                <Truck size={20} className="group-hover:translate-x-1 duration-200" />
+              </button>
+            </div>
           </motion.div>
         ) : (
           <motion.p {...fadeToTopVariant} className="text-center py-4 text-zinc-500">

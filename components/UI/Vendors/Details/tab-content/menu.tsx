@@ -6,7 +6,7 @@ import Tray from "./tray";
 
 const Menu = () => {
   return (
-    <motion.div {...opacityVariant} key={"menu"} className="flex gap-6">
+    <motion.div {...opacityVariant} key={"menu"} className="md:flex gap-6">
       <motion.div
         animate="animate"
         initial="initial"
@@ -21,7 +21,7 @@ const Menu = () => {
         ))}
       </motion.div>
 
-      <motion.div className="min-w-[21rem]">
+      <motion.div className="xl:min-w-[21rem] lg:min-w-[19rem] md:min-w-[17rem] min-w-[15rem] mt-8 md:mt-0 bg-white">
         <Tray />
       </motion.div>
     </motion.div>
