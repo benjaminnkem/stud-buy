@@ -1,22 +1,11 @@
 import { minus, plus } from "@/lib/helpers/math";
-import classNames from "classnames";
 import { AnimatePresence } from "framer-motion";
 import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import toast from "react-hot-toast";
 import { fadeToTopVariant, opacityVariant } from "@/lib/utils/variants";
-
-const cardClass = classNames([
-  "sm:w-[18rem] w-[95%] mx-auto sm:mx-0 min-h-[20rem] duration-300 border",
-  "rounded-lg p-2 hover:shadow-lg relative bg-white",
-]);
-
-const counterClass = classNames([
-  "outline-none min-w-12 flex items-center border",
-  "justify-center py-3 hover:shadow-lg duration-300",
-]);
+import { cardClass, counterButton } from "@/lib/data/class-styles";
 
 type Props = {
   updateGlobalCount: React.Dispatch<React.SetStateAction<number>>;
@@ -56,7 +45,7 @@ const MenuCard: React.FC<Props> = ({ updateGlobalCount }) => {
 
         <div className="flex items-center justify-center gap-1">
           <button
-            className={`${counterClass} rounded-l-full hover:bg-deepRed/50`}
+            className={`${counterButton} rounded-l-full hover:bg-deepRed/50`}
             onClick={() => (minus(setCount), minus(updateGlobalCount))}
           >
             <Minus size={16} />
@@ -71,7 +60,7 @@ const MenuCard: React.FC<Props> = ({ updateGlobalCount }) => {
             />
           </div>
           <button
-            className={`${counterClass} rounded-r-full hover:bg-freshGreen`}
+            className={`${counterButton} rounded-r-full hover:bg-freshGreen`}
             onClick={() => (plus(setCount), plus(updateGlobalCount))}
           >
             <Plus size={16} />

@@ -13,4 +13,5 @@ export type Food = {
   description: string;
   seller: string;
   price: number;
+  isAvailable: boolean;
 };
