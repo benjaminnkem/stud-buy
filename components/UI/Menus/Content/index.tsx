@@ -53,7 +53,7 @@ const MenuDisplay = () => {
             onChange={(e) => filterCategories(e.target.value)}
           />
 
-          <div className="overflow-y-auto space-y-1 show_scroll pr-1 min-w-[15rem]">
+          <div className="overflow-y-auto space-y-1 show_scroll pr-1 md:min-w-[15rem]">
             {categories.map((item, id) => (
               <div
                 key={id}

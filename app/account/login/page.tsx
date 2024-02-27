@@ -13,7 +13,7 @@ const Page = () => {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1, transition: stiffTransition }}
           exit={{ scale: 0, opacity: 0 }}
-          className="min-h-[28rem] rounded-2xl shadow-2xl md:max-w-[30rem] w-[98%] mx-auto bg-white overflow-hidden"
+          className="min-h-[28rem] rounded-2xl shadow-2xl md:max-w-[30rem] w-[96%] mx-auto bg-white overflow-hidden"
         >
           <div className="overflow-hidden">
             <motion.div

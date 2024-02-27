@@ -19,9 +19,9 @@ const Page = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1, transition: stiffTransition }}
-          className="min-h-[36rem] rounded-2xl shadow-2xl md:max-w-[50rem] w-[98%] mx-auto bg-white grid overflow-hidden grid-cols-2"
+          className="min-h-[36rem] rounded-2xl shadow-2xl md:max-w-[50rem] w-[96%] mx-auto bg-white grid overflow-hidden sm:grid-cols-2"
         >
-          <div className="h-full relative overflow-hidden w-full">
+          <div className="h-full relative overflow-hidden w-full sm:block hidden">
             <Image
               src={"/images/account/food2.jpg"}
               alt="register"
@@ -66,7 +66,7 @@ const Page = () => {
                       We are so thrilled to have you join the student community. lorem ipsum dolor sit amet.
                     </motion.p>
                     <motion.div variants={fadeToTopVariant} className="pt-4">
-                      <button className="border-b font-semibold" onClick={toggleCurrent}>
+                      <button className="border-b font-semibold animate-bounce" onClick={toggleCurrent}>
                         Join as a vendor
                       </button>
                     </motion.div>
@@ -87,7 +87,7 @@ const Page = () => {
                       Let&apos;s take your business to greater heights, and reach student faster lorem, ipsum dolor.
                     </motion.p>
                     <motion.div variants={fadeToTopVariant} className="pt-4">
-                      <button className="border-b font-semibold" onClick={toggleCurrent}>
+                      <button className="border-b font-semibold animate-bounce" onClick={toggleCurrent}>
                         Join as a student
                       </button>
                     </motion.div>
@@ -97,12 +97,12 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="overflow-hidden">
+          <div className="overflow-hidden duration-200">
             <AnimatePresence mode="wait">
               {current === "regular" ? (
-                <StudentRegisterForm key="student-form" />
+                <StudentRegisterForm key="student-form" toggleForm={toggleCurrent} />
               ) : (
-                <VendorRegisterForm key="vendor-form" />
+                <VendorRegisterForm key="vendor-form" toggleForm={toggleCurrent} />
               )}
             </AnimatePresence>
           </div>
