@@ -7,20 +7,12 @@ import MiniMenu from "@/components/Common/Cards/mini-menu";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { menuCats } from "@/lib/data/vendor";
-import { useQuery, useMutation } from "@tanstack/react-query";
-
-const fetchCategories = async () => new Promise((resolve) => setTimeout(resolve, 500)).then(() => [...menuCats]);
 
 const MenuDisplay = () => {
   const [menuCategory, setMenuCategory] = useState("rice");
   const [categories, setCategories] = useState(menuCats);
 
   const [filterInput, setFilterInput] = useState("");
-
-  const { isLoading, data, isError } = useQuery<string[]>({
-    queryKey: ["menu-categories"],
-    queryFn: () => fetchCategories(),
-  });
 
   const filterCategories = (value: string) => {
     setFilterInput(value);
