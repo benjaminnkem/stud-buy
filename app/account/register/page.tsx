@@ -4,9 +4,10 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { fadeToTopVariant, parentVariant, stiffTransition } from "@/lib/utils/variants";
 import { useState } from "react";
-import { StudentRegisterForm, VendorRegisterForm } from "@/components/UI/Account/Register";
 import Link from "next/link";
 import { Home } from "lucide-react";
+import StudentRegisterForm from "@/components/UI/Account/Register/student-form";
+import VendorRegisterForm from "@/components/UI/Account/Register/vendor-form";
 
 const Page = () => {
   const [current, setCurrent] = useState<"regular" | "vendor">("regular");

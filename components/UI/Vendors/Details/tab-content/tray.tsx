@@ -23,7 +23,7 @@ const Tray = () => {
   }, [items]);
 
   return (
-    <div className="w-full border p-2 rounded-lg max-h-[35rem] overflow-y-auto show_scroll">
+    <div className="w-full border p-2 rounded-lg md:max-h-[35rem] overflow-y-auto show_scroll">
       <p className="text-center font-bold text-xl">Tray 🍴</p>
       <AnimatePresence mode="wait" initial={false}>
         {items && items.length > 0 ? (

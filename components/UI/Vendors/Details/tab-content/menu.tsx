@@ -11,7 +11,7 @@ const Menu = () => {
         animate="animate"
         initial="initial"
         variants={parentVariant}
-        className="grid lg:grid-cols-2 gap-x-4 gap-y-4"
+        className="grid lg:grid-cols-2 gap-x-4 gap-y-4 md:gap-y-2"
       >
         {/* {Array.from({ length: 16 }).map((_, id) => (
           <MenuCard key={id} updateGlobalCount={setGlobalCount} />

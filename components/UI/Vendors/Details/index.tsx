@@ -33,9 +33,7 @@ const VendorContent = () => {
         ))}
       </div>
 
-      <AnimatePresence mode="wait" initial={false}>
-        {renderContent()}
-      </AnimatePresence>
+      <AnimatePresence mode="wait">{renderContent()}</AnimatePresence>
     </div>
   );
 };

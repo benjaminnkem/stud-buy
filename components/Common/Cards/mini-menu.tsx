@@ -60,10 +60,10 @@ const BuyAction: React.FC<Props> = (data) => {
     <>
       <motion.div
         variants={fadeToTopVariant}
-        className="relative duration-300 select-none bg-white rounded-lg border border-zinc-100 flex justify-between hover:shadow-xl cursor-pointer overflow-hidden"
+        className="relative duration-300 select-none bg-white rounded-lg border border-zinc-100 xl:max-h-[8rem] flex justify-between hover:shadow-xl cursor-pointer overflow-hidden"
       >
         <div className="flex items-center md:gap-2 gap-8">
-          <div className="overflow-hidden max-w-[10rem] rounded-l-lg flex-shrink-0">
+          <div className="overflow-hidden max-w-[10rem] h-full rounded-l-lg flex-shrink-0">
             <Image src={image} alt={name} width={500} height={500} className="w-full h-full object-cover" />
           </div>
 
