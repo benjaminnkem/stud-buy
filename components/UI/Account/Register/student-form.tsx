@@ -27,7 +27,7 @@ const StudentRegisterForm: React.FC<{ toggleForm: () => void }> = ({ toggleForm 
     setLoading(true);
 
     try {
-      await publicApi.post("/auth/register", { ...data, role: "BASIC" });
+      await publicApi.post("/auth/register", { ...data });
 
       toast.success("Account created successfully.");
 

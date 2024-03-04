@@ -26,7 +26,7 @@ const VendorRegisterForm: React.FC<{ toggleForm: () => void }> = ({ toggleForm }
     setLoading(true);
 
     try {
-      await publicApi.post("/auth/vendor/register", { ...data, role: "VENDOR" });
+      await publicApi.post("/auth/vendor/register", { ...data });
 
       toast.success("Account created successfully.");
 
