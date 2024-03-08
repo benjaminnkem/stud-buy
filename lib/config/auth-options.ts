@@ -1,5 +1,19 @@
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { publicApi } from "./axios-instance";
+
+type LoginPayload = {
+  accessToken: string;
+  refreshToken: string;
+};
+
+type BasicUserSignature = {
+  id: string;
+  email: string;
+  isVerified: boolean;
+  firstName: string;
+  lastName: string;
+};
 
 const authOptions: AuthOptions = {
   providers: [
@@ -14,14 +28,31 @@ const authOptions: AuthOptions = {
 
         const { email, password } = credentials;
 
-        const user = { id: "1", name: "Benjamin Nkem", email: "benjaminnkem@gmail.com" };
+        try {
+          if (!email || !password) return null;
 
-        if (user) return user;
+          const { data } = await publicApi.post<LoginPayload>("/auth/login", { email, password });
 
-        return null;
+          return { ...data, id: crypto.randomUUID() };
+        } catch (e: any) {
+          console.log(e.response.data);
+          return null;
+        }
       },
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    // jwt: async () => {},
+    // session: async () => {},
+  },
+  pages: {
+    error: "/account/login",
+    signIn: "/",
+    signOut: "/account/login",
+  },
 };
 
 export default authOptions;

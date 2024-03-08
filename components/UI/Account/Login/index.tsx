@@ -10,6 +10,7 @@ import { publicApi } from "@/lib/config/axios-instance";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { Vortex } from "react-loader-spinner";
+import { signIn } from "next-auth/react";
 
 type Inputs = {
   email: string;
@@ -30,11 +31,15 @@ const LoginContent = () => {
     setLoading(true);
 
     try {
-      await publicApi.post("/auth/login", data);
+      const res = await signIn("credentials", { ...data, redirect: false });
+
+      if (res?.status === 401) {
+        toast.error("Unauthorized (Credentials incorrect).", { id: "unauthorized" });
+        return;
+      }
 
       toast.success("Logged in successfully.");
-
-      router.push("/");
+      router.push("/dashboard"); // push to dashboard
     } catch (e: any) {
       toast.error(e?.response?.data?.error ?? "An error occurred");
     } finally {
