@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../public/globals.css";
 import { mulish, openSans } from "@/lib/utils/fonts";
-import Providers from "@/lib/utils/providers";
+import Providers from "@/lib/providers/providers";
 
 export const metadata: Metadata = {
   title: "CBuddy - Let's Activate your tastebuds",

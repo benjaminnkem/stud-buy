@@ -78,6 +78,7 @@ body {
   background: #e63946;
 }
 
-input {
-  outline: none;
+input,
+button {
+  outline: none !important;
 }

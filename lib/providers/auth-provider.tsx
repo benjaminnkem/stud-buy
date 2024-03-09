@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
-import { dancingScript } from "./fonts";
+import { dancingScript } from "../utils/fonts";
 
 type Props = React.PropsWithChildren;
 
