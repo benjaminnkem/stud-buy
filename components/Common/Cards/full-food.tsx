@@ -8,7 +8,7 @@ const FullFoodCard: React.FC<Food> = (food) => {
   const addToCart = () => toast.success(`${food.name} added to cart.`, { id: `${food.name}-cart` });
 
   return (
-    <div className="rounded-2xl flex-shrink-0 select-none shadow-2xl overflow-hidden max-w-[20rem] relative duration-300">
+    <div className="rounded-2xl flex-shrink-0 select-none shadow-md border overflow-hidden max-w-[20rem] relative duration-300">
       <div className="max-h-[15rem] overflow-hidden">
         <Image src={food.image} alt={food.name} width={500} height={500} className="w-full h-full object-cover" />
       </div>
