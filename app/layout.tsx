@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../public/globals.css";
-import { forum, mulish } from "@/lib/utils/fonts";
+import { mulish, openSans } from "@/lib/utils/fonts";
 import Providers from "@/lib/utils/providers";
 
 export const metadata: Metadata = {

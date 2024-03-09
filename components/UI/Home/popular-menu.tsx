@@ -1,46 +1,27 @@
-import { dancingScript } from "@/lib/utils/fonts";
-import Image from "next/image";
+"use client";
 import { foods } from "@/lib/data/home";
-import { ChevronRight, Star, ShoppingCart } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import { playfair } from "@/lib/utils/fonts";
+import useSlider from "@/lib/hooks/useSlider";
+import FullFoodCard from "@/components/Common/Cards/full-food";
 
 const PopularMenu = () => {
+  const { slideLeft, slideRight, sliderRef } = useSlider();
+
   return (
     <section className="container">
-      <h3
-        className={`text-deepRed ${dancingScript.className} font-extrabold text-center uppercase md:text-3xl text-2xl`}
-      >
-        Popular on the Menu
-      </h3>
-      <div className="mt-8 grid md:grid-cols-3 sm:grid-cols-2 lg:gap-24 md:gap-12 sm:gap-12 gap-10 md:px-10">
-        {[...foods, ...foods].map((food, id) => (
-          <div key={id} className="rounded-lg hover:shadow-2xl shadow relative overflow-hidden duration-300">
-            <div className="max-h-[15rem] overflow-hidden">
-              <Image src={food.image} alt={food.name} width={500} height={500} className="w-full h-full object-cover" />
-            </div>
+      <div className="flex items-center justify-between">
+        <h3 className={`text-deepRed font-extrabold md:text-3xl text-2xl ${playfair.className}`}>Popular Dishes</h3>
 
-            <div className="px-5 py-3 space-y-3">
-              <p className="font-bold text-2xl">{food.name}</p>
-              <p className="text-zinc-500 text-sm">{food.description}</p>
-
-              <div className="flex items-center justify-between">
-                <p className="text-xl">N8,999</p>
-
-                <div
-                  className="w-10 h-10 grid place-content-center bg-deepRed rounded-full text-white cursor-pointer"
-                  title="Add to cart"
-                >
-                  <ShoppingCart size={18} />
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+        <div className="hidden items-center gap-4 sm:flex">
+          <ArrowLeft size={28} className="cursor-pointer duration-200 hover:text-deepRed" onClick={slideLeft} />
+          <ArrowRight size={28} className="cursor-pointer duration-200 hover:text-deepRed" onClick={slideRight} />
+        </div>
       </div>
-      <div className="flex items-center justify-center mt-6">
-        <button className="flex items-center gap-1 border border-deepRed px-5 py-2 rounded-xl text-deepRed font-bold">
-          <span>See More</span>
-          <ChevronRight />
-        </button>
+      <div className="mt-8 flex overflow-x-auto md:gap-9 gap-4 pb-16 px-10 -ml-6 scroll-smooth" ref={sliderRef}>
+        {[...foods, ...foods].map((food, id) => (
+          <FullFoodCard key={id} {...food} />
+        ))}
       </div>
     </section>
   );
