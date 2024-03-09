@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import AuthProvider from "./auth-provider";
 
 // register gsap plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -27,8 +28,10 @@ const Providers = ({ children }: React.PropsWithChildren) => {
     <>
       <QueryClientProvider client={queryClient}>
         <SessionProvider>
-          <Toaster {...toastOptions} />
-          {children}
+          <AuthProvider>
+            <Toaster {...toastOptions} />
+            {children}
+          </AuthProvider>
         </SessionProvider>
         <ReactQueryDevtools />
       </QueryClientProvider>

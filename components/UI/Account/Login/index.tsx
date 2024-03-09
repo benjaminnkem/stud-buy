@@ -6,11 +6,10 @@ import { opacityVariant, parentVariant, stiffTransition } from "@/lib/utils/vari
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { publicApi } from "@/lib/config/axios-instance";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { Vortex } from "react-loader-spinner";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 type Inputs = {
   email: string;
@@ -26,6 +25,8 @@ const LoginContent = () => {
 
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const { data: session } = useSession();
 
   const submit: SubmitHandler<Inputs> = async (data) => {
     setLoading(true);
