@@ -3,7 +3,6 @@
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { dancingScript } from "./fonts";
-import { motion } from "framer-motion";
 
 type Props = React.PropsWithChildren;
 
@@ -14,7 +13,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     // TODO: update state manager if session
   }, [status]);
 
-  if (status !== "loading")
+  if (status === "loading")
     return (
       <div className="bg-deepRed/20 fixed top-0 left-0 w-full h-full flex items-center justify-center">
         <div className="flex items-center gap-4">
