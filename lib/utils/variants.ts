@@ -37,3 +37,9 @@ export const fadeToLeftVariant: Variants = {
   animate: { opacity: 1, x: 0, transition: { ...stiffTransition } },
   exit: { opacity: 0, x: "5%" },
 };
+
+export const heightVariant: Variants = {
+  initial: { height: "0%", opacity: 0 },
+  animate: { height: "100%", opacity: 1 },
+  exit: { height: "0%", opacity: 0 },
+};

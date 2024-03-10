@@ -9,27 +9,7 @@ export const sidebarLinks: SidebarLink[] = [
         href: "/home",
         children: null,
       },
-      {
-        label: "Analytics",
-        href: "/analytics",
-        children: [
-          {
-            label: "Overview",
-            href: "/analytics/overview",
-            children: null,
-          },
-          {
-            label: "Traffic",
-            href: "/analytics/traffic",
-            children: null,
-          },
-          {
-            label: "User Engagement",
-            href: "/analytics/user-engagement",
-            children: null,
-          },
-        ],
-      },
+
       {
         label: "Reports",
         href: "/reports",
@@ -71,6 +51,28 @@ export const sidebarLinks: SidebarLink[] = [
   },
   {
     heading: "Analytics",
-    links: [],
+    links: [
+      {
+        label: "Analytics",
+        href: "/analytics",
+        children: [
+          {
+            label: "Overview",
+            href: "/analytics/overview",
+            children: null,
+          },
+          {
+            label: "Traffic",
+            href: "/analytics/traffic",
+            children: null,
+          },
+          {
+            label: "User Engagement",
+            href: "/analytics/user-engagement",
+            children: null,
+          },
+        ],
+      },
+    ],
   },
 ];
