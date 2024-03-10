@@ -1,4 +1,4 @@
-import { SidebarLink } from "@/lib/types/dashboard/sidebar.types";
+import { SidebarLink } from "@/lib/types/auth/sidebar.types";
 
 export const sidebarLinks: SidebarLink[] = [
   {

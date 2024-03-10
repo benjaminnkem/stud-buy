@@ -82,3 +82,12 @@ input,
 button {
   outline: none !important;
 }
+
+@keyframes pulse_ {
+  50% {
+    opacity: 0.5;
+  }
+}
+.animate-pulse__ {
+  animation: pulse_ 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

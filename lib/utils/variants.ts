@@ -43,3 +43,9 @@ export const heightVariant: Variants = {
   animate: { height: "100%", opacity: 1 },
   exit: { height: "0%", opacity: 0 },
 };
+
+export const fadeToTopSlowVariant: Variants = {
+  initial: { opacity: 0, y: "100%" },
+  animate: { opacity: 1, y: 0, transition: { ...stiffTransition, duration: 0.8 } },
+  exit: { opacity: 0, y: "100%" },
+};

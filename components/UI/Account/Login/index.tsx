@@ -26,8 +26,6 @@ const LoginContent = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const { data: session } = useSession();
-
   const submit: SubmitHandler<Inputs> = async (data) => {
     setLoading(true);
 
@@ -40,6 +38,7 @@ const LoginContent = () => {
       }
 
       toast.success("Logged in successfully.");
+      console.log(res?.url?.substring(res.url.indexOf("="), res.url.length - 1));
       router.push("/dashboard"); // push to dashboard
     } catch (e: any) {
       toast.error(e?.response?.data?.error ?? "An error occurred");

@@ -1,10 +1,13 @@
-import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { publicApi } from "./axios-instance";
+import { decode } from "jsonwebtoken";
+import { AuthOptions } from "next-auth";
 
 type LoginPayload = {
-  accessToken: string;
-  refreshToken: string;
+  tokens: {
+    accessToken: string;
+    refreshToken: string;
+  };
 };
 
 type BasicUserSignature = {
@@ -33,9 +36,10 @@ const authOptions: AuthOptions = {
 
           const { data } = await publicApi.post<LoginPayload>("/auth/login", { email, password });
 
-          return { ...data, id: crypto.randomUUID() };
+          const decodedData = decode(data.tokens.accessToken) as BasicUserSignature;
+
+          return { ...data, ...decodedData };
         } catch (e: any) {
-          console.log(e.response.data);
           return null;
         }
       },
@@ -50,8 +54,8 @@ const authOptions: AuthOptions = {
   },
   pages: {
     error: "/account/login",
-    signIn: "/",
-    signOut: "/account/login",
+    signIn: "/account/login",
+    signOut: "/",
   },
 };
 

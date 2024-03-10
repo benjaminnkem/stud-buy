@@ -3,8 +3,8 @@
 import DashboardNavbar from "@/components/Layout/Dashboard/Navbar";
 import DashboardSidebar from "@/components/Layout/Dashboard/Sidebar";
 import { useSession } from "next-auth/react";
-import { useSidebar } from "../store/dashboard/sidebar.store";
-import { SidebarLink } from "../types/dashboard/sidebar.types";
+import { useSidebar } from "../store/auth/sidebar.store";
+import { SidebarLink } from "../types/auth/sidebar.types";
 import { Book, Home, PieChart, Settings } from "lucide-react";
 import { useEffect } from "react";
 

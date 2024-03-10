@@ -2,13 +2,16 @@
 
 import { dancingScript } from "@/lib/utils/fonts";
 import Link from "next/link";
-import { Group, Menu, Search, ShoppingCart, User, X } from "lucide-react";
+import { Menu, PieChart, Search, ShoppingCart, User, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { navLinks } from "@/lib/store/navbar.store";
+import { useUser } from "@/lib/data/auth/user.store";
 
 const Navbar = () => {
   const [activeSolo, setActiveSolo] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { user } = useUser();
 
   const ref = useRef<HTMLElement>(null);
 
@@ -78,24 +81,35 @@ const Navbar = () => {
             </ul>
 
             <div className="flex items-center gap-4">
-              {/* <Group size={20} /> */}
               <ShoppingCart size={20} />
               <Search size={20} />
-              <div>
-                <Link href={"/account/login"}>
-                  <button className="px-5 py-[6px] rounded-full duration-300 bg-deepRed text-white flex items-center gap-1">
-                    <span>Account</span>
-                    <User size={18} />
-                  </button>
-                </Link>
-              </div>
+              {user ? (
+                <div>
+                  <Link href={"/dashboard"} target="_blank">
+                    <button className="px-5 py-[6px] rounded-full duration-300 border border-deepRed text-white/80 hover:bg-deepRed hover:text-white flex items-center gap-1">
+                      <span>Dashboard</span>
+                      <PieChart size={18} />
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <div>
+                  <Link href={"/account/login"}>
+                    <button className="px-5 py-[6px] rounded-full duration-300 bg-deepRed text-white flex items-center gap-1">
+                      <span>Account</span>
+                      <User size={18} />
+                    </button>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
 
+          {/* Mobile view */}
           <div className="flex md:hidden items-center gap-4">
             <ShoppingCart className="cursor-pointer" />
             <div>
-              <Link href={"/account/login"}>
+              <Link href={user ? "/dashboard" : "/account/login"} target={user ? "_blank" : "_self"}>
                 <User className="cursor-pointer" />
               </Link>
             </div>

@@ -1,8 +1,8 @@
-import { useSidebar } from "@/lib/store/dashboard/sidebar.store";
-import { SidebarChild } from "@/lib/types/dashboard/sidebar.types";
+import { useSidebar } from "@/lib/store/auth/sidebar.store";
+import { SidebarChild } from "@/lib/types/auth/sidebar.types";
 import { dancingScript } from "@/lib/utils/fonts";
 import { ArrowLeft, ArrowRight, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { opacityVariant } from "@/lib/utils/variants";
 import { usePathname } from "next/navigation";
@@ -14,11 +14,15 @@ const DashboardSidebar = () => {
   return (
     <div
       className={`h-screen bg-zinc-950 text-white p-5 overflow-y-auto duration-200 ${
-        isOpen ? "w-[300px]" : "w-[85px]"
+        isOpen ? "md:w-[300px] w-[290px]" : "w-[85px]"
       }`}
     >
       <div className="flex items-center justify-between">
-        {isOpen && <p className={`${dancingScript.className}`}>SweetBuy</p>}
+        {isOpen && (
+          <Link href={"/"} className={`${dancingScript.className}`}>
+            SweetBuy
+          </Link>
+        )}
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.div {...opacityVariant}>
@@ -53,11 +57,26 @@ const DashboardSidebar = () => {
 };
 
 const Expandable: React.FC<SidebarChild> = (link) => {
-  const [expanded, setExpanded] = useState(false);
-  const { isOpen } = useSidebar();
+  const [expanded, setExpanded] = useState(true);
+  const { isOpen, controlOpen } = useSidebar();
   const pathname = usePathname();
 
   const toggleExpand = () => setExpanded((prev) => !prev);
+
+  useEffect(() => {
+    let windowSize = window.innerWidth;
+
+    controlOpen(windowSize >= 768);
+
+    const handleResize = () => {
+      windowSize = window.innerWidth;
+      controlOpen(windowSize >= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="text-zinc-400">
